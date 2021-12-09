@@ -7,7 +7,6 @@ namespace Flexio.Migrations
 {
     public class DesignTimeContextFactory : IDesignTimeDbContextFactory<FlexioContext>
     {
-        //private const string LocalSql = "server=localhost\\SQLEXPRESS;database=Flexio-Local;Trusted_Connection=True;";
         private const string LocalSql = "server=(LocalDB)\\MSSQLLocalDB;database=Flexio-Local;Trusted_Connection=True;";
 
         private static readonly string MigrationAssemblyName = typeof(DesignTimeContextFactory).Assembly.GetName().Name;
