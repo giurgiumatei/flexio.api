@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using FluentValidation.AspNetCore;
 using Flexio.API.Middleware;
+using Serilog;
 
 namespace Flexio.API
 {
@@ -58,6 +59,8 @@ namespace Flexio.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
             app.UseCors();
