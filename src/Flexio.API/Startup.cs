@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using FluentValidation.AspNetCore;
 using Flexio.API.Middleware;
 using Serilog;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Flexio.API
 {
@@ -48,6 +49,12 @@ namespace Flexio.API
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.RegisterServices();
             services.AddRouting(options => options.LowercaseUrls = true);
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt =>
+                {
+                    opt.Audience = Configuration["AAD:ResourceId"];
+                    opt.Authority = $"{Configuration["AAD:InstanceId"]}{Configuration["AAD:TenantId"]}";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +72,7 @@ namespace Flexio.API
             app.UseRouting();
             app.UseCors();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCustomErrorHandlingMiddleware();
 

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Flexio.API.Requests.Versions;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flexio.API.Controllers
@@ -16,6 +17,7 @@ namespace Flexio.API.Controllers
             _mediator = mediator;
         }
 
+        [Authorize]
         [HttpGet("get-version")]
         public async Task<ActionResult<string>> GetVersion([FromQuery] GetVersionRequest request)
         {
