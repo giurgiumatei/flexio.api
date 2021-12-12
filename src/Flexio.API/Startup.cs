@@ -50,11 +50,7 @@ namespace Flexio.API
             services.RegisterServices();
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>
-                {
-                    opt.Audience = Configuration["AAD:ResourceId"];
-                    opt.Authority = $"{Configuration["AAD:InstanceId"]}{Configuration["AAD:TenantId"]}";
-                });
+                .AddJwtBearer(options => Configuration.Bind("AzureAdB2C", options));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
