@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using FluentValidation.AspNetCore;
 using Flexio.API.Middleware;
+using Flexio.Azure.Graph.Configuration;
+using Flexio.Azure.Graph.Services;
 using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
@@ -29,6 +31,13 @@ namespace Flexio.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var azureGraphSettings =
+                Configuration.GetSection("AzureGraph");
+            services.Configure<FlexioAzureGraphConfiguration>(azureGraphSettings);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => Configuration.Bind("AzureAdB2C", options));
+
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
@@ -40,6 +49,7 @@ namespace Flexio.API
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"));
             });
 
+            services.AddScoped<IGraphUserManager, GraphUserManager>();
             services.AddControllers();
             services.AddMediatR(typeof(GetVersionQueryHandler));
             services.AddMvc()
@@ -49,8 +59,7 @@ namespace Flexio.API
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.RegisterServices();
             services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => Configuration.Bind("AzureAdB2C", options));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

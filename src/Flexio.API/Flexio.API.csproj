@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Flexio.Azure.Graph\Flexio.Azure.Graph.csproj" />
     <ProjectReference Include="..\Flexio.Data\Flexio.Data.csproj" />
     <ProjectReference Include="..\Flexio.Business\Flexio.Business.csproj" />
   </ItemGroup>

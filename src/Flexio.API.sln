@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Migrations", "Flexio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.TestUtils", "Flexio.TestUtils\Flexio.TestUtils.csproj", "{3AAD6208-85E0-439E-9B02-3A41884B8C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flexio.DatabaseContext.IntegrationTests", "Flexio.DatabaseContext.IntegrationTests\Flexio.DatabaseContext.IntegrationTests.csproj", "{D11D24DB-9EB5-4BAE-A716-7FDED055899C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.DatabaseContext.IntegrationTests", "Flexio.DatabaseContext.IntegrationTests\Flexio.DatabaseContext.IntegrationTests.csproj", "{D11D24DB-9EB5-4BAE-A716-7FDED055899C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flexio.Business.IntegrationTests", "Flexio.Business.IntegrationTests\Flexio.Business.IntegrationTests.csproj", "{0A59C2B0-518B-4B3E-8752-358598EADCF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Business.IntegrationTests", "Flexio.Business.IntegrationTests\Flexio.Business.IntegrationTests.csproj", "{0A59C2B0-518B-4B3E-8752-358598EADCF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flexio.Azure.Graph", "Flexio.Azure.Graph\Flexio.Azure.Graph.csproj", "{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{0A59C2B0-518B-4B3E-8752-358598EADCF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A59C2B0-518B-4B3E-8752-358598EADCF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A59C2B0-518B-4B3E-8752-358598EADCF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
