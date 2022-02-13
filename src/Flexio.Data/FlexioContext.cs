@@ -17,12 +17,16 @@ namespace Flexio.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserDetail> UserDetails { get; set; }
 
+        //Lookups
+        public virtual DbSet<RoleLookup> RoleLookup { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ApplicationVersionConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new UserDetailConfiguration());
+            builder.ApplyConfiguration(new RoleLookupConfiguration());
         }
     }
 }

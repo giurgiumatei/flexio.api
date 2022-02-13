@@ -4,14 +4,16 @@ using Flexio.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Flexio.Migrations.Migrations
 {
     [DbContext(typeof(FlexioContext))]
-    partial class FlexioContextModelSnapshot : ModelSnapshot
+    [Migration("20220213193405_AddedUserRoles")]
+    partial class AddedUserRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
