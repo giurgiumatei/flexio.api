@@ -18,7 +18,7 @@ namespace Flexio.API.Controllers
         }
 
         [Authorize]
-        [HttpGet("get-version")]
+        [HttpGet]
         public async Task<ActionResult<string>> GetVersion([FromQuery] GetVersionRequest request)
         {
             var result = await _mediator.Send(request.ToQuery());
