@@ -14,8 +14,8 @@ namespace Flexio.Data.Models.Users
         public int ActualOwnerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string City { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public DateTime DateModified { get; set; }
         public Role RoleId { get; set; }
 
 
