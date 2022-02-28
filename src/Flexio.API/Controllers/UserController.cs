@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Flexio.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -20,6 +20,7 @@ namespace Flexio.API.Controllers
             _mediator = mediator;
         }
 
+        [HttpPost]
         public async Task<ActionResult<bool>> AddUser([FromBody] AddUserRequest request)
         {
             if (!ModelState.IsValid)

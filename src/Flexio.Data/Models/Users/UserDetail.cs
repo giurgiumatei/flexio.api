@@ -10,8 +10,8 @@ namespace Flexio.Data.Models.Users
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int CreatorId { get; set; }
-        public int ActualOwnerId { get; set; }
+        public int? CreatorId { get; set; }
+        public int? ActualOwnerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string City { get; set; }

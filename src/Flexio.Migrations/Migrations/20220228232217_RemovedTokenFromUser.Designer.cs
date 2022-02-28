@@ -4,14 +4,16 @@ using Flexio.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Flexio.Migrations.Migrations
 {
     [DbContext(typeof(FlexioContext))]
-    partial class FlexioContextModelSnapshot : ModelSnapshot
+    [Migration("20220228232217_RemovedTokenFromUser")]
+    partial class RemovedTokenFromUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace Flexio.Migrations.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ActualOwnerId")
+                    b.Property<int>("ActualOwnerId")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -119,7 +121,7 @@ namespace Flexio.Migrations.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("CreatorId")
+                    b.Property<int>("CreatorId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -144,12 +146,10 @@ namespace Flexio.Migrations.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ActualOwnerId")
-                        .IsUnique()
-                        .HasFilter("[ActualOwnerId] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("CreatorId")
-                        .IsUnique()
-                        .HasFilter("[CreatorId] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -162,12 +162,14 @@ namespace Flexio.Migrations.Migrations
                     b.HasOne("Flexio.Data.Models.Users.User", "ActualOwner")
                         .WithOne("ActualOwnerDetail")
                         .HasForeignKey("Flexio.Data.Models.Users.UserDetail", "ActualOwnerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Flexio.Data.Models.Users.User", "Creator")
                         .WithOne("CreatorDetail")
                         .HasForeignKey("Flexio.Data.Models.Users.UserDetail", "CreatorId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("Flexio.Data.Models.Users.User", "User")
                         .WithOne("UserDetail")

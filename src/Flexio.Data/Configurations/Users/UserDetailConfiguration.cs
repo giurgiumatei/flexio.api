@@ -23,11 +23,13 @@ namespace Flexio.Data.Configurations.Users
             builder.HasOne(x => x.Creator)
                 .WithOne(x => x.CreatorDetail)
                 .HasForeignKey<UserDetail>(x => x.CreatorId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.ActualOwner)
                 .WithOne(x => x.ActualOwnerDetail)
                 .HasForeignKey<UserDetail>(x => x.ActualOwnerId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
