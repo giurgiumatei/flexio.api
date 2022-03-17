@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Flexio.API.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -33,9 +33,10 @@ namespace Flexio.API.Controllers
                 {
                     Email = request.Email,
                     City = request.City,
-                    DateOfBirth = request.DateOfBirth,
                     FirstName = request.FirstName,
-                    LastName = request.LastName
+                    LastName = request.LastName,
+                    Country = request.Country,
+                    DisplayName = request.DisplayName
                 }
                 );
             return Ok(result);

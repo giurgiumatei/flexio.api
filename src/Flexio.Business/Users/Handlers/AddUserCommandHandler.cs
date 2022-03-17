@@ -34,7 +34,8 @@ namespace Flexio.Business.Users.Handlers
                     City = command.City,
                     FirstName = command.FirstName,
                     LastName = command.LastName,
-                    DateOfBirth = command.DateOfBirth
+                    Country = command.Country,
+                    DisplayName = command.DisplayName
                 }
             });
 

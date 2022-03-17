@@ -11,7 +11,8 @@ namespace Flexio.Data.Configurations.Users
             builder.Property(x => x.FirstName).IsRequired().HasMaxLength(100);
             builder.Property(x => x.LastName).IsRequired().HasMaxLength(100);
             builder.Property(x => x.City).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.DateOfBirth).IsRequired();
+            builder.Property(x => x.Country).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.DisplayName).IsRequired().HasMaxLength(100);
 
             builder.HasAlternateKey(x => x.Id);
 
