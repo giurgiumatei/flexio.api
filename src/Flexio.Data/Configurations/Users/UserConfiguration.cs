@@ -10,6 +10,7 @@ namespace Flexio.Data.Configurations.Users
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.DateAdded).IsRequired();
 
             builder.HasIndex(x => x.Email).IsUnique();
         }

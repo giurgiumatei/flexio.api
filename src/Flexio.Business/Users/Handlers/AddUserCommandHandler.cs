@@ -29,6 +29,7 @@ namespace Flexio.Business.Users.Handlers
             _context.Users.Add(new User
             {
                 Email = command.Email,
+                DateAdded = DateTime.Now,
                 UserDetail = new UserDetail
                 {
                     City = command.City,

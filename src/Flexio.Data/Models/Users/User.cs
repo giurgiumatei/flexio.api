@@ -9,6 +9,7 @@ namespace Flexio.Data.Models.Users
     {
         public int Id { get; set; }
         public string Email { get; set; }
+        public DateTime DateAdded { get; set; }
 
         public UserDetail UserDetail { get; set; }
         public UserDetail CreatorDetail { get; set; }
