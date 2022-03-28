@@ -47,7 +47,7 @@ namespace Flexio.API
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"));
             });
 
-            services.AddScoped<IGraphUserManager, GraphUserManager>();
+            services.AddSingleton<IGraphUserManager, GraphUserManager>();
             services.AddControllers();
             services.AddMediatR(typeof(GetVersionQueryHandler));
             services.AddMvc()
