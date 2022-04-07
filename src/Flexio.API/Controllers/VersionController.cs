@@ -8,6 +8,7 @@ namespace Flexio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class VersionController : Controller
     {
         private readonly IMediator _mediator;
@@ -17,7 +18,6 @@ namespace Flexio.API.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<string>> GetVersion([FromQuery] GetVersionRequest request)
         {
