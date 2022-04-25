@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Flexio.Data.Models.Users
 {
@@ -14,5 +12,7 @@ namespace Flexio.Data.Models.Users
         public UserDetail UserDetail { get; set; }
         public UserDetail CreatorDetail { get; set; }
         public UserDetail ActualOwnerDetail { get; set; }
+        public List<Comment> CommentsAddedByUser { get; set; }
+        public List<Comment> CommentsAddedToUser { get; set; }
     }
 }
