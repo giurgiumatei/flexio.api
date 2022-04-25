@@ -1,7 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flexio.API.Requests.Users;
 using Flexio.API.Requests.Versions;
+using Flexio.Business.Filters;
 using Flexio.Business.Users.Commands;
+using Flexio.Business.Users.Models;
+using Flexio.Business.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +23,17 @@ namespace Flexio.API.Controllers
         public UserController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("get-user-feed-profiles")]
+        public async Task<ActionResult<IEnumerable<UserFeedProfile>>> GetUserFeedProfiles(int pageNumber, int pageSize)
+        {
+            var result = await _mediator.Send(new GetUserFeedProfilesQuery
+            {
+                DataFilterQuery = new DataFilterQuery{ PageNumber = pageNumber, PageSize = pageSize}
+            });
+
+            return Ok(result);
         }
 
         [HttpPost]

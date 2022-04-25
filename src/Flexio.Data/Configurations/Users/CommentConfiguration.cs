@@ -10,6 +10,7 @@ namespace Flexio.Data.Configurations.Users
         {
             builder.Property(x => x.Text).IsRequired().HasMaxLength(256);
             builder.Property(x => x.DateAdded).IsRequired();
+            builder.Property(x => x.IsAnonymous).IsRequired();
         }
     }
 }
