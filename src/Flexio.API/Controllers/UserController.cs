@@ -25,6 +25,7 @@ namespace Flexio.API.Controllers
             _mediator = mediator;
         }
 
+        [AllowAnonymous]
         [HttpGet("get-user-feed-profiles")]
         public async Task<ActionResult<IEnumerable<UserFeedProfile>>> GetUserFeedProfiles(int pageNumber, int pageSize)
         {
