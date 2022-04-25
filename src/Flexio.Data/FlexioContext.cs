@@ -16,6 +16,7 @@ namespace Flexio.Data
         public virtual DbSet<ApplicationVersion> ApplicationVersions { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserDetail> UserDetails { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
 
         //Lookups
         public virtual DbSet<RoleLookup> RoleLookup { get; set; }
@@ -27,6 +28,7 @@ namespace Flexio.Data
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new UserDetailConfiguration());
             builder.ApplyConfiguration(new RoleLookupConfiguration());
+            builder.ApplyConfiguration(new CommentConfiguration());
         }
     }
 }
