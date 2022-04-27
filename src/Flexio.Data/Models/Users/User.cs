@@ -10,8 +10,6 @@ namespace Flexio.Data.Models.Users
         public DateTime DateAdded { get; set; }
 
         public UserDetail UserDetail { get; set; }
-        public UserDetail CreatorDetail { get; set; }
-        public UserDetail ActualOwnerDetail { get; set; }
         public List<Comment> CommentsAddedByUser { get; set; }
         public List<Comment> CommentsAddedToUser { get; set; }
     }

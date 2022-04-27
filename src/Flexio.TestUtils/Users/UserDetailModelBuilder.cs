@@ -25,20 +25,6 @@ namespace Flexio.TestUtils.Users
             return this;
         }
 
-        public UserDetailModelBuilder WithCreatorId(int creatorId)
-        {
-            _creatorId = creatorId;
-
-            return this;
-        }
-
-        public UserDetailModelBuilder WithActualOwnerId(int actualOwnerId)
-        {
-            _actualOwnerId = actualOwnerId;
-
-            return this;
-        }
-
         public UserDetailModelBuilder WithFirstName(string firstName)
         {
             _firstName = firstName;
