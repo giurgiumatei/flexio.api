@@ -12,6 +12,7 @@ using FluentValidation.AspNetCore;
 using Flexio.API.Middleware;
 using Flexio.Azure.Graph.Configuration;
 using Flexio.Azure.Graph.Services;
+using Flexio.Azure.Storage.Configuration;
 using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
@@ -32,6 +33,7 @@ namespace Flexio.API
             var azureGraphSettings =
                 Configuration.GetSection("AzureGraph");
             services.Configure<FlexioAzureGraphConfiguration>(azureGraphSettings);
+            services.Configure<AzureStorageSettings>(Configuration.GetSection("AzureStorage"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => Configuration.Bind("AzureAdB2C", options));
@@ -47,7 +49,6 @@ namespace Flexio.API
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"));
             });
 
-            services.AddSingleton<IGraphUserManager, GraphUserManager>();
             services.AddControllers();
             services.AddMediatR(typeof(GetVersionQueryHandler));
             services.AddMvc()

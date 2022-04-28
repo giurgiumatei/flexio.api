@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.API", "Flexio.API\Flexio.API.csproj", "{EF69CC49-97FE-4176-99E5-9D12C42700B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{191344CE-8B47-4763-B815-53A4A7053F9C} = {191344CE-8B47-4763-B815-53A4A7053F9C}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Business", "Flexio.Business\Flexio.Business.csproj", "{76FDAF23-FDB1-4DEC-B980-96A6B1701ED4}"
 EndProject
@@ -21,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.DatabaseContext.Inte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Business.IntegrationTests", "Flexio.Business.IntegrationTests\Flexio.Business.IntegrationTests.csproj", "{0A59C2B0-518B-4B3E-8752-358598EADCF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flexio.Azure.Graph", "Flexio.Azure.Graph\Flexio.Azure.Graph.csproj", "{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Azure.Graph", "Flexio.Azure.Graph\Flexio.Azure.Graph.csproj", "{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flexio.Azure.Storage", "Flexio.Azure.Storage\Flexio.Azure.Storage.csproj", "{191344CE-8B47-4763-B815-53A4A7053F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +70,10 @@ Global
 		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{191344CE-8B47-4763-B815-53A4A7053F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{191344CE-8B47-4763-B815-53A4A7053F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{191344CE-8B47-4763-B815-53A4A7053F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{191344CE-8B47-4763-B815-53A4A7053F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

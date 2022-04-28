@@ -1,13 +1,16 @@
-﻿using Flexio.Data;
+﻿using Flexio.Azure.Graph.Services;
+using Flexio.Azure.Storage.Services;
+using Flexio.Data;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Flexio.API.DependencyRegistration
+namespace Flexio.API.DependencyRegistration;
+
+public static class Services
 {
-    public static class Services
+    public static void RegisterServices(this IServiceCollection services)
     {
-        public static void RegisterServices(this IServiceCollection services)
-        {
-            services.AddScoped<FlexioContext, FlexioContext>();
-        }
+        services.AddScoped<IGraphUserManager, GraphUserManager>();
+        services.AddScoped<FlexioContext, FlexioContext>();
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 }
