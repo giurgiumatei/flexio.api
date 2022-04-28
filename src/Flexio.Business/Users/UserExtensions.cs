@@ -19,7 +19,7 @@ namespace Flexio.Business.Users
                 DisplayName = user.UserDetail.FirstName + " " + user.UserDetail.LastName,
                 City = user.UserDetail.City,
                 Photo = "photo",
-                Comments = user.CommentsAddedToUser
+                LastComment = user.CommentsAddedToUser
                     .Select(c => new Comment
                     {
                         CommentId = c.Id,
@@ -28,7 +28,7 @@ namespace Flexio.Business.Users
                         DateAdded = c.DateAdded,
                         IsAnonymous = c.IsAnonymous
                     })
-                    .ToList()
+                    .FirstOrDefault()
             });
         }
 
