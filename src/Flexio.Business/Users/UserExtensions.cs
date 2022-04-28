@@ -28,6 +28,7 @@ namespace Flexio.Business.Users
                         DateAdded = c.DateAdded,
                         IsAnonymous = c.IsAnonymous
                     })
+                    .OrderByDescending(comment => comment.DateAdded)
                     .FirstOrDefault()
             });
         }
