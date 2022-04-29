@@ -18,7 +18,7 @@ namespace Flexio.Business.Users
                 UserId = user.Id,
                 DisplayName = user.UserDetail.FirstName + " " + user.UserDetail.LastName,
                 City = user.UserDetail.City,
-                Photo = "photo",
+                Photo = user.UserDetail.ProfileImageUrl,
                 LastComment = user.CommentsAddedToUser
                     .Select(c => new Comment
                     {
