@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Flexio.Data.Models.Users;
 
-namespace Flexio.Data.Models.Users
+public class UserDetail
 {
-    public class UserDetail
-    {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string DisplayName { get; set; }
-        public string ProfileImageUrl { get; set; }
-        public Role RoleId { get; set; }
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string City { get; set; }
+    public string Country { get; set; }
+    public string DisplayName { get; set; }
+    public string ProfileImageUrl { get; set; }
+    public Role RoleId { get; set; }
+    public Gender GenderId { get; set; }
 
-        public User User { get; set; }
-    }
+    public User User { get; set; }
 }

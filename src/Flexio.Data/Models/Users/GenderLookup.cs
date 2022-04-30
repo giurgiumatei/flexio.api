@@ -1,7 +1,7 @@
 ﻿namespace Flexio.Data.Models.Users;
 
-public class RoleLookup
+public class GenderLookup
 {
-    public Role Id { get; set; }
+    public Gender Id { get; set; }
     public string Name { get; set; }
 }
