@@ -17,10 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Flexio.Azure.Storage\Flexio.Azure.Storage.csproj" />
     <ProjectReference Include="..\Flexio.Data\Flexio.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Utilities\" />
     <Folder Include="Users\Queries\" />
   </ItemGroup>
 

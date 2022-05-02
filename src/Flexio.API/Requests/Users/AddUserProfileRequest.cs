@@ -1,13 +1,15 @@
 ﻿using System;
+using Flexio.Data.Models.Users;
+using Microsoft.AspNetCore.Http;
 
 namespace Flexio.API.Requests.Users;
 
-public class AddUserRequest
+public class AddUserProfileRequest
 {
-    public string Email { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string City { get; set; }
     public string Country { get; set; }
-    public string DisplayName { get; set; }
+    public Gender GenderId { get; set; }
+    public IFormFile ProfileImage { get; set; }
 }

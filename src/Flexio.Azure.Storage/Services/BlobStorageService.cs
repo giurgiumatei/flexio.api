@@ -24,7 +24,7 @@ public class BlobStorageService : IBlobStorageService
         _blobServiceClient.GetBlobContainers().ToList();
 
     public async Task CreateContainer(string containerName) =>
-        await _blobServiceClient.CreateBlobContainerAsync(containerName);
+        await _blobServiceClient.CreateBlobContainerAsync(containerName, PublicAccessType.Blob);
 
     public async Task DeleteContainer(string containerName)
     {
@@ -33,7 +33,7 @@ public class BlobStorageService : IBlobStorageService
         await containerClient.DeleteAsync();
     }
 
-    public async Task Upload(string containerName, Stream file, string fileName)
+    public async Task<string> Upload(string containerName, Stream file, string fileName)
     {
         var containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
 
@@ -47,6 +47,8 @@ public class BlobStorageService : IBlobStorageService
         ResetStreamPosition(file);
 
         await blobClient.UploadAsync(file, true);
+
+        return blobClient.Uri.ToString();
     }
 
     public async Task Delete(string containerName, string blobName)

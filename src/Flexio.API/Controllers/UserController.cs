@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Flexio.API.Requests.Users;
 using Flexio.API.Requests.Versions;
 using Flexio.Business.Filters;
+using Flexio.Business.Users;
 using Flexio.Business.Users.Commands;
 using Flexio.Business.Users.Models;
 using Flexio.Business.Users.Queries;
@@ -56,6 +57,29 @@ namespace Flexio.API.Controllers
                     DisplayName = request.DisplayName
                 }
                 );
+            return Ok(result);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("userProfile")]
+        public async Task<ActionResult<bool>> AddUserProfile([FromForm] AddUserProfileRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _mediator.Send(
+                new AddUserProfileCommand
+                {
+                    City = request.City,
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
+                    Country = request.Country,
+                    GenderId = request.GenderId,
+                    ProfileImage = await FileUtils.ToMemoryStream(request.ProfileImage)
+                }
+            );
             return Ok(result);
         }
     }
