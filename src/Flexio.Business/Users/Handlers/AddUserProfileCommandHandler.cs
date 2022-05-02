@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Azure;
-using Azure.Storage.Blobs.Models;
 using Flexio.Azure.Storage.Services;
-using Flexio.Business.Users.Models;
+using Flexio.Business.Users.Commands;
 using Flexio.Data;
 using Flexio.Data.Models.Users;
 using MediatR;
@@ -27,7 +25,6 @@ public class AddUserProfileCommandHandler : IRequestHandler<AddUserProfileComman
     {
         _command = command;
 
-        //CreateStorageContainer();
         var blobUri = await UploadProfileImageToStorage();
 
         _context.Users.Add(new User
@@ -39,6 +36,7 @@ public class AddUserProfileCommandHandler : IRequestHandler<AddUserProfileComman
                 FirstName = _command.FirstName,
                 LastName = _command.LastName,
                 Country = _command.Country,
+                GenderId = _command.GenderId,
                 DisplayName = GetDisplayName(),
                 ProfileImageUrl = blobUri
             }
@@ -47,8 +45,6 @@ public class AddUserProfileCommandHandler : IRequestHandler<AddUserProfileComman
         await _context.SaveChangesAsync(cancellationToken);
         return true;
     }
-
-    private void CreateStorageContainer() => _storageService.CreateContainer(GetContainerName());
 
     private async Task<string> UploadProfileImageToStorage()
     {

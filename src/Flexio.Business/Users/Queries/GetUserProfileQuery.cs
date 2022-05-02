@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Flexio.Business.Users.Queries;
 
-public class GetUserFeedProfilesQuery : IRequest<IEnumerable<UserFeedProfile>>
+public class GetUserProfileQuery : IRequest<UserProfile>
 {
-    public DataFilterQuery DataFilterQuery { get; set; }
+    public int UserId { get; set; }
 }

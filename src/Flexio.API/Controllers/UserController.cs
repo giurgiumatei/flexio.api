@@ -12,75 +12,86 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Flexio.API.Controllers
+namespace Flexio.API.Controllers;
+
+[Route("api/[controller]")]
+[Authorize]
+[ApiController]
+public class UserController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [Authorize]
-    [ApiController]
-    public class UserController : ControllerBase
+    private readonly IMediator _mediator;
+
+    public UserController(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public UserController(IMediator mediator)
+    [AllowAnonymous]
+    [HttpGet("get-user-feed-profiles")]
+    public async Task<ActionResult<IEnumerable<UserFeedProfile>>> GetUserFeedProfiles(int pageNumber, int pageSize)
+    {
+        var result = await _mediator.Send(new GetUserFeedProfilesQuery
         {
-            _mediator = mediator;
+            DataFilterQuery = new DataFilterQuery {PageNumber = pageNumber, PageSize = pageSize}
+        });
+
+        return result is not null ? Ok(result) : NotFound();
+    }
+
+    [AllowAnonymous]
+    [HttpGet("userProfile")]
+    public async Task<ActionResult<UserFeedProfile>> GetUserProfile(int userId)
+    {
+        var result = await _mediator.Send(new GetUserProfileQuery
+        {
+            UserId = userId
+        });
+
+        return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<bool>> AddUser([FromBody] AddUserRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
         }
 
-        [AllowAnonymous]
-        [HttpGet("get-user-feed-profiles")]
-        public async Task<ActionResult<IEnumerable<UserFeedProfile>>> GetUserFeedProfiles(int pageNumber, int pageSize)
-        {
-            var result = await _mediator.Send(new GetUserFeedProfilesQuery
+        var result = await _mediator.Send(
+            new AddUserCommand
             {
-                DataFilterQuery = new DataFilterQuery{ PageNumber = pageNumber, PageSize = pageSize}
-            });
-
-            return Ok(result);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<bool>> AddUser([FromBody] AddUserRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
+                Email = request.Email,
+                City = request.City,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Country = request.Country,
+                DisplayName = request.DisplayName
             }
+        );
+        return Ok(result);
+    }
 
-            var result = await _mediator.Send(
-                new AddUserCommand
-                {
-                    Email = request.Email,
-                    City = request.City,
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    Country = request.Country,
-                    DisplayName = request.DisplayName
-                }
-                );
-            return Ok(result);
-        }
-
-        [AllowAnonymous]
-        [HttpPost("userProfile")]
-        public async Task<ActionResult<bool>> AddUserProfile([FromForm] AddUserProfileRequest request)
+    [AllowAnonymous]
+    [HttpPost("userProfile")]
+    public async Task<ActionResult<bool>> AddUserProfile([FromForm] AddUserProfileRequest request)
+    {
+        if (!ModelState.IsValid)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var result = await _mediator.Send(
-                new AddUserProfileCommand
-                {
-                    City = request.City,
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    Country = request.Country,
-                    GenderId = request.GenderId,
-                    ProfileImage = await FileUtils.ToMemoryStream(request.ProfileImage)
-                }
-            );
-            return Ok(result);
+            return BadRequest(ModelState);
         }
+
+        var result = await _mediator.Send(
+            new AddUserProfileCommand
+            {
+                City = request.City,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Country = request.Country,
+                GenderId = request.GenderId,
+                ProfileImage = await FileUtils.ToMemoryStream(request.ProfileImage)
+            }
+        );
+        return Ok(result);
     }
 }

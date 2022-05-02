@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using Flexio.Data.Models.Users;
 using MediatR;
 
-namespace Flexio.Business.Users.Models;
+namespace Flexio.Business.Users.Commands;
 
 public record AddUserProfileCommand : IRequest<bool>
 {
