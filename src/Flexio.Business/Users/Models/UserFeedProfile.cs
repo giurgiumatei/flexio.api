@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Flexio.Business.Comments.Models;
 
 namespace Flexio.Business.Users.Models;
 

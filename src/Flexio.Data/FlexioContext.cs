@@ -1,6 +1,8 @@
 ﻿using Flexio.Data.Configurations.ApplicationVersions;
+using Flexio.Data.Configurations.Comments;
 using Flexio.Data.Configurations.Users;
 using Flexio.Data.Models.ApplicationVersions;
+using Flexio.Data.Models.Comments;
 using Flexio.Data.Models.Users;
 using Microsoft.EntityFrameworkCore;
 

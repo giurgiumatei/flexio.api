@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Flexio.Data.Models.Comments;
 
 namespace Flexio.Data.Models.Users
 {

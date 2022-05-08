@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Flexio.Business.Users.Models;
+namespace Flexio.Business.Comments.Models;
 
 public record Comment
 {

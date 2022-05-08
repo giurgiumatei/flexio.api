@@ -2,7 +2,7 @@
 using System.Linq;
 using Flexio.Business.Users.Models;
 using Flexio.Data.Models.Users;
-using Comment = Flexio.Business.Users.Models.Comment;
+using Comment = Flexio.Business.Comments.Models.Comment;
 
 namespace Flexio.Business.Users;
 
@@ -53,7 +53,7 @@ public static class UserExtensions
         };
     }
 
-    public static string GetDisplayName(Data.Models.Users.Comment comment)
+    public static string GetDisplayName(Data.Models.Comments.Comment comment)
     {
         if (comment.IsAnonymous)
         {

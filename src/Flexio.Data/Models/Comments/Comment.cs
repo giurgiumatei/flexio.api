@@ -1,6 +1,7 @@
 ﻿using System;
+using Flexio.Data.Models.Users;
 
-namespace Flexio.Data.Models.Users;
+namespace Flexio.Data.Models.Comments;
 
 public class Comment
 {

@@ -1,8 +1,8 @@
-﻿using Flexio.Data.Models.Users;
+﻿using Flexio.Data.Models.Comments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Flexio.Data.Configurations.Users
+namespace Flexio.Data.Configurations.Comments
 {
     public class CommentConfiguration : IEntityTypeConfiguration<Comment>
     {
