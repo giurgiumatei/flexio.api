@@ -23,6 +23,7 @@ public class AddCommentsCommandHandler : IRequestHandler<AddCommentCommand, bool
         {
             Text = command.Text,
             AddedByUserId = GetAddedByUserIdByEmail(command.Email),
+            AddedToUserId = command.AddedToUserId,
             DateAdded = command.DateAdded,
             IsAnonymous = command.IsAnonymous
         });
