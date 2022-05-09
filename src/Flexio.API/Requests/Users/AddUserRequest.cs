@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Flexio.API.Requests.Users;
+﻿namespace Flexio.API.Requests.Users;
 
 public class AddUserRequest
 {

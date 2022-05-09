@@ -1,11 +1,9 @@
-﻿using System;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Flexio.Business.Comments.Commands;
-using Flexio.Business.Users.Commands;
 using Flexio.Data;
 using Flexio.Data.Models.Comments;
-using Flexio.Data.Models.Users;
 using MediatR;
 
 namespace Flexio.Business.Comments.Handlers;
@@ -24,11 +22,18 @@ public class AddCommentsCommandHandler : IRequestHandler<AddCommentCommand, bool
         _context.Comments.Add(new Comment
         {
             Text = command.Text,
+            AddedByUserId = GetAddedByUserIdByEmail(command.Email),
             DateAdded = command.DateAdded,
             IsAnonymous = command.IsAnonymous
         });
 
         await _context.SaveChangesAsync(cancellationToken);
         return true;
+    }
+
+    public int GetAddedByUserIdByEmail(string email)
+    {
+        return _context.Users
+            .FirstOrDefault(user => user.Email == email)!.Id;
     }
 }

@@ -33,8 +33,10 @@ public class CommentController : ControllerBase
             new AddCommentCommand
             {
                 DisplayName = request.DisplayName,
+                Email = request.Email,
                 Text = request.Text,
                 IsAnonymous = request.IsAnonymous,
+                AddedToUserId = request.AddedToUserId,
                 DateAdded = DateTime.Now
             }
         );
