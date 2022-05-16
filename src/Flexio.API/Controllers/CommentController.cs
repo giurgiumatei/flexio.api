@@ -21,7 +21,6 @@ public class CommentController : ControllerBase
     }
 
     [HttpPost]
-    [AllowAnonymous]
     public async Task<ActionResult<bool>> AddComment([FromBody] AddCommentRequest request)
     {
         if (!ModelState.IsValid)
