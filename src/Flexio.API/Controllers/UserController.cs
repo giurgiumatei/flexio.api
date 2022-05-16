@@ -40,11 +40,22 @@ public class UserController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet("userProfile")]
-    public async Task<ActionResult<UserFeedProfile>> GetUserProfile(int userId)
+    public async Task<ActionResult<UserProfile>> GetUserProfile(int userId)
     {
         var result = await _mediator.Send(new GetUserProfileQuery
         {
             UserId = userId
+        });
+
+        return Ok(result);
+    }
+
+    [HttpGet("userProfileByEmail")]
+    public async Task<ActionResult<UserProfile>> GetUserProfileByEmail(string email)
+    {
+        var result = await _mediator.Send(new GetUserProfileByEmailQuery
+        {
+            Email = email
         });
 
         return Ok(result);
