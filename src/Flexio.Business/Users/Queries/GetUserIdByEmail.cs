@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Flexio.Business.Users.Queries;
 
-public class GetUserProfileByEmailQuery : IRequest<UserProfile>
+public class GetUserIdByEmail : IRequest<int?>
 {
     public string Email { get; set; }
 }

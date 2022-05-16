@@ -24,7 +24,9 @@ public static class UserExtensions
                     Text = c.Text,
                     DateAdded = c.DateAdded,
                     IsAnonymous = c.IsAnonymous
-                }).MaxBy(comment => comment.DateAdded)
+                })
+                .OrderByDescending(comment => comment.DateAdded)
+                .FirstOrDefault()
         });
     }
 

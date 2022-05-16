@@ -50,10 +50,10 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("userProfileByEmail")]
-    public async Task<ActionResult<UserProfile>> GetUserProfileByEmail(string email)
+    [HttpGet("userId")]
+    public async Task<ActionResult<UserProfile>> GetUserIdByEmail(string email)
     {
-        var result = await _mediator.Send(new GetUserProfileByEmailQuery
+        var result = await _mediator.Send(new GetUserIdByEmail
         {
             Email = email
         });
