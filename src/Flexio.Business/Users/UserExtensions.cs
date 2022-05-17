@@ -10,7 +10,9 @@ public static class UserExtensions
 {
     public static IQueryable<UserFeedProfile> ToUserFeedProfiles(this IQueryable<User> query)
     {
-        return query.Select(user => new UserFeedProfile
+        return query
+            .OrderByDescending(user => user.DateAdded)
+            .Select(user => new UserFeedProfile
         {
             UserId = user.Id,
             DisplayName = user.UserDetail.FirstName + " " + user.UserDetail.LastName,
