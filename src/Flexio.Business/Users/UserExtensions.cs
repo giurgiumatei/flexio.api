@@ -42,6 +42,7 @@ public static class UserExtensions
             Country = user.UserDetail.Country,
             Gender = Enum.GetName(typeof(Gender), user.UserDetail.GenderId),
             Photo = user.UserDetail.ProfileImageUrl,
+            CanBeTakenOver = user.Email == null,
             Comments = user.CommentsAddedToUser
                 .Select(c => new Comment
                 {

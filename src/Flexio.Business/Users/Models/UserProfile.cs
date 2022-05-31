@@ -11,5 +11,6 @@ public record UserProfile
     public string Country { get; set; }
     public string Gender { get; set; }
     public string Photo { get; set; }
+    public bool CanBeTakenOver { get; set; }
     public List<Comment> Comments { get; set; }
 }
