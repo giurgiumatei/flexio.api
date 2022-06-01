@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Flexio.API.Requests.Users;
 using Flexio.API.Requests.Versions;
@@ -42,6 +44,7 @@ public class UserController : ControllerBase
     [HttpGet("userProfile")]
     public async Task<ActionResult<UserProfile>> GetUserProfile(int userId)
     {
+        var currentUserEmail = ((ClaimsIdentity)User.Identity)?.Claims.ToList()[10];
         var result = await _mediator.Send(new GetUserProfileQuery
         {
             UserId = userId
