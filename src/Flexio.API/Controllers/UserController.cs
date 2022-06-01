@@ -105,4 +105,24 @@ public class UserController : ControllerBase
         );
         return Ok(result);
     }
+
+    [AllowAnonymous]
+    [HttpPost("takeOverUserProfile")]
+    public async Task<ActionResult<bool>> TakeOverUserProfile([FromBody] TakeOverUserProfileRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await _mediator.Send(
+            new TakeOverUserProfileCommand
+            {
+                UserId = request.UserId,
+                Email = request.Email,
+                Password = request.Password
+            }
+        );
+        return Ok(result);
+    }
 }

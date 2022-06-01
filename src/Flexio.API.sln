@@ -25,8 +25,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Business.IntegrationTests", "Flexio.Business.IntegrationTests\Flexio.Business.IntegrationTests.csproj", "{0A59C2B0-518B-4B3E-8752-358598EADCF0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Azure.Graph", "Flexio.Azure.Graph\Flexio.Azure.Graph.csproj", "{F657692D-0ABD-4C9E-A0A4-E67B96ABAE95}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0A97E7D5-CB97-40B2-8515-D2FBF1FC78EA} = {0A97E7D5-CB97-40B2-8515-D2FBF1FC78EA}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flexio.Azure.Storage", "Flexio.Azure.Storage\Flexio.Azure.Storage.csproj", "{191344CE-8B47-4763-B815-53A4A7053F9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flexio.Azure.Storage", "Flexio.Azure.Storage\Flexio.Azure.Storage.csproj", "{191344CE-8B47-4763-B815-53A4A7053F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

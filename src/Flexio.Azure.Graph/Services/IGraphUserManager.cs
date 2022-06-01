@@ -1,7 +1,8 @@
-﻿namespace Flexio.Azure.Graph.Services
+﻿using Flexio.Data.Models.Users;
+
+namespace Flexio.Azure.Graph.Services;
+
+public interface IGraphUserManager
 {
-    public interface IGraphUserManager
-    {
-        public void AddUser(string email);
-    }
+    public void AddUser(User email, string password);
 }
