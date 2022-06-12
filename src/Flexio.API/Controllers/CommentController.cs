@@ -41,4 +41,17 @@ public class CommentController : ControllerBase
         );
         return Ok(result);
     }
+
+    [AllowAnonymous]
+    [HttpDelete]
+    public async Task<ActionResult<bool>> DeleteComment(int commentId)
+    {
+        var result = await _mediator.Send(
+            new DeleteCommentCommand
+            {
+                CommentId = commentId
+            }
+        );
+        return Ok(result);
+    }
 }

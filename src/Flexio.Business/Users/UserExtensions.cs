@@ -32,7 +32,7 @@ public static class UserExtensions
         });
     }
 
-    public static UserProfile ToUserProfile(this User user)
+    public static UserProfile ToUserProfile(this User user, string currentUserEmail = null)
     {
         return new UserProfile
         {
@@ -50,7 +50,8 @@ public static class UserExtensions
                     DisplayName = GetDisplayName(c),
                     Text = c.Text,
                     DateAdded = c.DateAdded,
-                    IsAnonymous = c.IsAnonymous
+                    IsAnonymous = c.IsAnonymous,
+                    CanBeDeleted = currentUserEmail != null
                 })
                 .ToList()
         };

@@ -8,11 +8,11 @@ using MediatR;
 
 namespace Flexio.Business.Comments.Handlers;
 
-public class AddCommentsCommandHandler : IRequestHandler<AddCommentCommand, bool>
+public class AddCommentCommandHandler : IRequestHandler<AddCommentCommand, bool>
 {
     private readonly FlexioContext _context;
 
-    public AddCommentsCommandHandler(FlexioContext context)
+    public AddCommentCommandHandler(FlexioContext context)
     {
         _context = context;
     }

@@ -32,7 +32,7 @@ public class GetUserProfileQueryHandler : IRequestHandler<GetUserProfileQuery, U
 
         await LoadData();
 
-        return _user.ToUserProfile();
+        return _user.ToUserProfile(request.CurrentUserEmail);
     }
 
     private async Task LoadData()
