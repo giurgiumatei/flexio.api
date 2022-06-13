@@ -53,6 +53,7 @@ public static class UserExtensions
                     IsAnonymous = c.IsAnonymous,
                     CanBeDeleted = currentUserEmail != null && user.Email == currentUserEmail
                 })
+                .OrderByDescending(comment => comment.DateAdded)
                 .ToList()
         };
     }
