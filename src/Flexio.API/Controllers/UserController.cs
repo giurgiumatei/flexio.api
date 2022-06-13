@@ -42,16 +42,8 @@ public class UserController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet("userProfile")]
-    public async Task<ActionResult<UserProfile>> GetUserProfile(int userId)
+    public async Task<ActionResult<UserProfile>> GetUserProfile(int userId, string currentUserEmail)
     {
-        var currentUserClaims = ((ClaimsIdentity)User.Identity)?.Claims.ToList();
-        dynamic currentUserEmail = null;
-
-        if (currentUserClaims?.Count >= 10)
-        {
-            currentUserEmail = currentUserClaims[10];
-        }
-
         var result = await _mediator.Send(new GetUserProfileQuery
         {
             UserId = userId,

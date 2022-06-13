@@ -51,7 +51,7 @@ public static class UserExtensions
                     Text = c.Text,
                     DateAdded = c.DateAdded,
                     IsAnonymous = c.IsAnonymous,
-                    CanBeDeleted = currentUserEmail != null
+                    CanBeDeleted = currentUserEmail != null && user.Email == currentUserEmail
                 })
                 .ToList()
         };
