@@ -128,4 +128,16 @@ public class UserController : ControllerBase
         );
         return Ok(result);
     }
+
+    [AllowAnonymous]
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<UserSearchSuggestion>>> SearchUserProfile(string name)
+    {
+        var result = await _mediator.Send(new GetUserSearchSuggestionsQuery
+        {
+            Name = name
+        });
+
+        return Ok(result);
+    }
 }
