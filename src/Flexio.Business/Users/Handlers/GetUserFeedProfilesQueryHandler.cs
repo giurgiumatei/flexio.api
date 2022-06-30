@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Flexio.Business.Users.Models;
@@ -24,6 +25,7 @@ public class GetUserFeedProfilesQueryHandler : IRequestHandler<GetUserFeedProfil
             .Include(user => user.UserDetail)
             .Include(user => user.CommentsAddedToUser)
             .ThenInclude(comment => comment.AddedByUser).ThenInclude(addedByUser => addedByUser.UserDetail)
+            .Where(user => user.UserDetail.ProfileImageUrl != null)
             .ToUserFeedProfiles();
 
         var data = query.GetPage(request.DataFilterQuery.PageNumber, request.DataFilterQuery.PageSize);

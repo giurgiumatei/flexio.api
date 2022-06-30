@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Flexio.Business.Users.Commands;
@@ -19,6 +20,11 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, bool>
 
     public async Task<bool> Handle(AddUserCommand command, CancellationToken cancellationToken)
     {
+        if (_context.Users.FirstOrDefault(u => u.Email == command.Email) != null)
+        {
+            return false;
+        }
+
         _context.Users.Add(new User
         {
             Email = command.Email,
